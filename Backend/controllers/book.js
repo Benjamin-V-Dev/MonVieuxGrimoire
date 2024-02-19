@@ -9,7 +9,7 @@ exports.createBook = (req, res, next) => {
     const book = new Book({
         ...bookObject,
         userId: req.auth.userId,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.compressedFilename}`,
+        imageUrl: `https://mvg.benjamin-vallon.fr/api/mvg/images/${req.file.compressedFilename}`,
         averageRating: bookObject.ratings[0].grade
     });
 
@@ -22,7 +22,7 @@ exports.createBook = (req, res, next) => {
 exports.updateBook = (req, res, next) => {
     const bookObject = req.file ? {
        ...JSON.parse(req.body.book),
-       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.compressedFilename}`
+       imageUrl: `https://mvg.benjamin-vallon.fr/api/mvg/images/${req.file.compressedFilename}`,
     } : { ...req.body };
  
    delete bookObject._userId;

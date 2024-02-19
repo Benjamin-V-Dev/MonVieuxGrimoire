@@ -11,7 +11,7 @@ const app = express();
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    imgSrc: ["'self'", "http://localhost:3000"],
+    imgSrc: ["'self'", "https://mvg.benjamin-vallon.fr:8001"],
     // autres directives si nécessaire
   },
 }));
@@ -45,8 +45,11 @@ app.use((req, res, next) => {
 // Utilisation des routes
 app.use('/api/books', bookRoutes);
 app.use('/api/auth', userRoutes);
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/api/mvg/images', express.static(path.join(__dirname, 'images')))
 
+app.listen(8801, ()=>{
+  console.log("Backend server is running!");
+})
 
 // Exportation Module pour utilisation server.js
 module.exports = app
