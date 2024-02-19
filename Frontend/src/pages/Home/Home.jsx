@@ -4,7 +4,7 @@ import BookItem from '../../components/Books/BookItem/BookItem';
 import Banner from '../../images/home_banner.jpg';
 import styles from './Home.module.css';
 import { getBooks } from '../../lib/common';
-
+/* Test */
 function Home() {
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
